@@ -1,18 +1,41 @@
 import React from "react"
 import AddTask from "./AddTask"
 import Task from "./Task"
+import { fetchTodoAction }  from "../redux/actions"
+import { connect } from "react-redux";
+import _ from "lodash"
 
-export default function Card() {
-    return (
-        <React.Fragment>
-            <div className="row">
-                    <div className="col-md-8 offset-md-2 todo-card">
-                        <h3 className="text-center">Let's see what you got to do</h3>
-                        <AddTask />
-                        <Task task="Ask Her Out &#10084;"/>
-                        <Task task="Have A Candle Night Dinner &#10084;"/>
+
+class Card extends React.Component {
+
+    componentDidMount(){
+        this.props.fetchTodoAction()
+    }
+
+    render(){
+        return (
+            <React.Fragment>
+                <div className="row">
+                        <div className="col-md-8 offset-md-2 todo-card">
+                            <h3 className="text-center">Let's see what you got to do</h3>
+                            <AddTask />
+                            {console.log(this.props.todos)}
+                            {
+                                _.map(this.props.todos, (value,index) => {
+                                    return(
+                                        <Task key={index} task={value.todo} />
+                                    )
+                                })
+                            }
+                        </div>
                     </div>
-                </div>
-        </React.Fragment>
-    );
+            </React.Fragment>
+        );
+    }
 }
+
+const mapStateToProps = state =>{
+    return { todos: state.fetchTodo}
+}
+
+export default connect(mapStateToProps, {fetchTodoAction})(Card)

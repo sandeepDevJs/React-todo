@@ -1,8 +1,11 @@
 import { FETCH_TODO } from "./type";
 import { database } from "../../helper"
 export function fetchTodoAction() {
-    return {
-        type: FETCH_TODO
+    return (dispatch) =>{
+        database.on("value", snapShot =>{
+            let data = snapShot.val()
+            dispatch({ type: FETCH_TODO, payload:data })
+        })
     }
 }
 
