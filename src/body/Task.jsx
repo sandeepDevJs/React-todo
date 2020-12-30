@@ -5,7 +5,7 @@ export default function Task(prop) {
             <div className="offset-md-3 task">
 
                 <div className="row">
-                    <div class="col-md-8 task">
+                    <div className="col-md-8 task">
                           <input type="text"
                                  placeholder={prop.task}
                           />
