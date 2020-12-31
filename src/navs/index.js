@@ -1,7 +1,8 @@
 import React from 'react'
+import { connect } from "react-redux";
+import { googleAuth } from "../redux/actions/auth";
 
-
-export default function index() {
+function Index(props) {
     return (
         <nav className="navbar navbar-expand-sm navbar-dark" style={{backgroundColor: "#98acf8"}}>
             <a className="navbar-brand" href="/">TODO APP</a>
@@ -10,9 +11,16 @@ export default function index() {
                     {/* This left blank intetionally!! */}
                 </ul>
                 <div className="form-inline my-2 my-lg-0">
-                    <button className="btn btn-primary my-2 my-sm-0" style={{color:"white", border:"1px solid white"}}>Login</button>
+                    <button 
+                    className="btn btn-primary my-2 my-sm-0" 
+                    style={{color:"white", border:"1px solid white"}}
+                    onClick={() => props.googleAuth()}
+
+                    >Login</button>
                 </div>
             </div>
         </nav>
     )
 }
+
+export default connect(null, {googleAuth})(Index)
