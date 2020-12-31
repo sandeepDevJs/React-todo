@@ -38,4 +38,8 @@ const mapStateToProps = state =>{
     return { todos: state.fetchTodo}
 }
 
-export default connect(mapStateToProps, {fetchTodoAction})(Card)
+const mapDispatchToProps = {
+    fetchTodoAction
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Card)

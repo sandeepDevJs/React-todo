@@ -1,7 +1,7 @@
 import { FETCH_TODO, LOGGED_IN } from "./type";
 import { database } from "../../helper"
 
-export function fetchTodoAction() {
+export function fetchTodoAction(dispatch) {
     return (dispatch) =>{
         database.on("value", snapShot =>{
             let data = snapShot.val()
