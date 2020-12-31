@@ -13,5 +13,8 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig)
 
+//Firebase
 export const database =  firebase.database().ref("/todos")
+
+//Auth
 export const googleProvider = new firebase.auth.GoogleAuthProvider()

@@ -3,6 +3,23 @@ import { connect } from "react-redux";
 import { googleAuth } from "../redux/actions/auth";
 
 function Index(props) {
+    //if already logged in then show logOut Btn
+    let Authbtn = (!props.isLoggedIn) ?
+        (
+            <button 
+            className="btn btn-primary my-2 my-sm-0" 
+            style={{color:"white", border:"1px solid white"}}
+            onClick={() => props.googleAuth()}
+
+            >Login</button>
+        ):
+        (
+            <button 
+            className="btn btn-primary my-2 my-sm-0" 
+            style={{color:"white", border:"1px solid white"}}
+
+            >Log Out</button>   
+        )
     return (
         <nav className="navbar navbar-expand-sm navbar-dark" style={{backgroundColor: "#98acf8"}}>
             <a className="navbar-brand" href="/">TODO APP</a>
@@ -11,16 +28,18 @@ function Index(props) {
                     {/* This left blank intetionally!! */}
                 </ul>
                 <div className="form-inline my-2 my-lg-0">
-                    <button 
-                    className="btn btn-primary my-2 my-sm-0" 
-                    style={{color:"white", border:"1px solid white"}}
-                    onClick={() => props.googleAuth()}
-
-                    >Login</button>
+                    {
+                        //login logout btn
+                        Authbtn
+                    }
                 </div>
             </div>
         </nav>
     )
 }
 
-export default connect(null, {googleAuth})(Index)
+const mapStateToProps = (state) => {
+    return { isLoggedIn : state.isLoggedIn}
+}
+
+export default connect(mapStateToProps, {googleAuth})(Index)

@@ -1,4 +1,4 @@
-import { FETCH_TODO } from "./type";
+import { FETCH_TODO, LOGGED_IN } from "./type";
 import { database } from "../../helper"
 
 export function fetchTodoAction() {
@@ -25,5 +25,12 @@ export function deleteTodo(id) {
 export function updateTodo(id, data) {
     return (dispatch) => {
         database.child(id).update(data)
+    }
+}
+
+export function isLoggedin() {
+    return{
+        type:LOGGED_IN,
+        payload:false
     }
 }

@@ -17,6 +17,7 @@ class AddTask extends React.Component {
             todo: this.state.todo
         }
         this.props.createNote(data)
+        //empty textbox after ADD
         this.setState({todo:""})
     }
 

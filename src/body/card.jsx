@@ -20,6 +20,7 @@ class Card extends React.Component {
                             <h3 className="text-center">Let's see what you got to do</h3>
                             <AddTask />
                             {
+                                //fetching Tasks from firebase
                                 _.map(this.props.todos, (value,index) => {
                                     return(
                                         <Task key={index} todoId={index} task={value.todo} />
