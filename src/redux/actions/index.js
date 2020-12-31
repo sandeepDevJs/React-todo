@@ -14,3 +14,9 @@ export function createNote(data) {
         database.push(data)
     }
 }
+
+export function deleteTodo(id) {
+    return (dispatch) => {
+        database.child(id).remove()
+    }
+}

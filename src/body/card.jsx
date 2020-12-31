@@ -19,11 +19,10 @@ class Card extends React.Component {
                         <div className="col-md-8 offset-md-2 todo-card">
                             <h3 className="text-center">Let's see what you got to do</h3>
                             <AddTask />
-                            {console.log(this.props.todos)}
                             {
                                 _.map(this.props.todos, (value,index) => {
                                     return(
-                                        <Task key={index} task={value.todo} />
+                                        <Task key={index} todoId={index} task={value.todo} />
                                     )
                                 })
                             }

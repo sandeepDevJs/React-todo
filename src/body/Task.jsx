@@ -1,22 +1,27 @@
 import React from "react"
-
-export default function Task(prop) {
-    return (
+import { deleteTodo } from "../redux/actions"
+import { connect } from "react-redux"
+class Task extends React.Component {
+    render(){
+        return (
             <div className="offset-md-3 task">
 
                 <div className="row">
-                    <div className="col-md-8 task">
                           <input type="text"
-                                 placeholder={prop.task}
+                                value={this.props.task}
                           />
-                          <button className="btn btn-danger" >
+                          <button className="btn btn-info" >
+                              UPDATE
+                          </button>
+                          <button className="btn btn-danger" onClick={() => this.props.deleteTodo(this.props.todoId)} >
                               DELETE
                           </button>
-                    </div>
                 </div>
                 
             </div>
-    )
+        )
+    }
 }
 
-<button>Heelo</button>
+
+export default connect(null, {deleteTodo})(Task)

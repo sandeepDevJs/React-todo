@@ -17,7 +17,6 @@ class AddTask extends React.Component {
             todo: this.state.todo
         }
         this.props.createNote(data)
-        alert("Todo Created!!")
         this.setState({todo:""})
     }
 

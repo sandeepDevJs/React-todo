@@ -18,11 +18,15 @@ input{
 }
 
 .task input{
-    margin-top: 16px;
-    width:70%;
+    margin-top: 3px;
     padding: 5px;
     border: 2px solid white;
     background-color: transparent;
     color: white;
     font-weight: bolder;
+}
+
+button{
+    padding: 0;
+    margin: 7px;
 }
