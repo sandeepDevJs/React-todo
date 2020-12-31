@@ -20,3 +20,9 @@ export function deleteTodo(id) {
         database.child(id).remove()
     }
 }
+
+export function updateTodo(id, data) {
+    return (dispatch) => {
+        database.child(id).update(data)
+    }
+}
